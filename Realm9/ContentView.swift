@@ -121,11 +121,10 @@ struct ContentView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading:
           
-            Button(action: {
-                let realm = try! Realm()
-                try! realm.write {
-                    realm.deleteAll()
-                }})
+            Button(action: {let realm = try! Realm()
+                    try! realm.write {
+                        realm.deleteAll()
+                    }})
            {
            Image(systemName: "gearshape")
            },

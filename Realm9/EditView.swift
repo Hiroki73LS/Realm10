@@ -71,7 +71,7 @@ struct EditView: View {
                                     results?.date = date
                                     results?.task = task
                                     results?.task2 = task2
-                                    results?.task3 = task3
+                                    results?.task3 = sentakusi[pick1]
                                     results?.isON = isON
                                 }
                 //-書き込み--------------------------
