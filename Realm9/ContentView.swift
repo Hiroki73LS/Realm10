@@ -58,6 +58,7 @@ struct ContentView: View {
                                 taskDetail = myModel.task
                                 task2Detail = myModel.task2
                                 task3Detail = myModel.task3
+                                pick1Detail = myModel.pick1
                                 isONDetail = myModel.isON
                                 dateDetail = myModel.date
                                 self.showAlert = true
@@ -110,7 +111,7 @@ struct ContentView: View {
                            realm?.delete(self.model.myModels[index])
                                                 }
                                             }
-                        }
+                        }.listRowBackground(Color.clear)
                     }
             }
             .background(NavigationConfigurator { nc in

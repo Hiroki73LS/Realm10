@@ -1,16 +1,19 @@
 import SwiftUI
 import RealmSwift
 
+
 class model: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var task = ""
     @objc dynamic var task2 = ""
     @objc dynamic var task3 = ""
+    @objc dynamic var pick1 = 0
     @objc dynamic var isON = false
     @objc dynamic var date = Date()
 }
 
 class viewModel: ObservableObject {
+    
     private var token: NotificationToken?
     private var myModelResults = try? Realm().objects(model.self)
     @Published var myModels: [model] = []
@@ -99,6 +102,7 @@ struct EnterView: View {
                                 models.task = task
                                 models.task2 = task2
                                 models.task3 = sentakusi[pick1]
+                                models.pick1 = pick1
                                 models.isON = isON
                                 models.date = date
                                 let realm = try? Realm()
