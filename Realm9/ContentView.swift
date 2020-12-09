@@ -48,7 +48,7 @@ struct ContentView: View {
         ZStack{
             backGroundColor.edgesIgnoringSafeArea(.all)
             VStack{
-                
+
                     List{
                         ForEach(model.myModels.sorted{$0.date > $1.date}, id: \.id) {
                                 myModel in
@@ -120,8 +120,9 @@ struct ContentView: View {
             }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading:
-          
-            Button(action: {let realm = try! Realm()
+
+            Button(action: {
+                    let realm = try! Realm()
                     try! realm.write {
                         realm.deleteAll()
                     }})
@@ -139,7 +140,8 @@ struct ContentView: View {
                     EnterView()
                 }
             })
-        }}}
+        }
+}}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
