@@ -41,6 +41,12 @@ struct EnterView: View {
     @State private var toSave = false
     @State private var alert = false
     @State private var alert1 = false
+    @State private var pickname1 = "選択肢１"
+    @State private var pickname2 = "選択肢２"
+    @State private var pickname3 = "選択肢３"
+
+
+
     @Environment(\.presentationMode) var presentationMode
     
     @State private var sentakusi = ["練習・課題","出欠席","その他"]
@@ -80,9 +86,9 @@ struct EnterView: View {
                     //-Picker--------------------------
                     Picker(selection: $pick1,
                            label: Text("")) {
-                        Text("練習・課題").tag(0)
-                        Text("出欠席").tag(1)
-                        Text("その他").tag(2)
+                        Text("\(pickname1)").tag(0)
+                        Text("\(pickname2)").tag(1)
+                        Text("\(pickname3)").tag(2)
                     }.pickerStyle(SegmentedPickerStyle())
                     //-Picker--------------------------
                     

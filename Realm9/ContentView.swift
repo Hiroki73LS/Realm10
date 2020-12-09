@@ -20,6 +20,9 @@ struct ContentView: View {
     @State private var taskDetail = ""
     @State private var task2Detail = ""
     @State private var task3Detail = ""
+    @State private var pickname1Detail = ""
+    @State private var pickname2Detail = ""
+    @State private var pickname3Detail = ""
     @State private var dateDetail = Date()
     @State private var isONDetail = false
     @State private var pick1Detail = 0
@@ -29,6 +32,9 @@ struct ContentView: View {
     @State private var isShown: Bool = false
     @State private var showingAlert = false
     @State private var showAlert = false
+    @State private var pickname4: String = "選択肢１"
+    @State private var pickname5: String = "選択肢２"
+    @State private var pickname6: String = "選択肢３"
     
     var dateFormat: DateFormatter {
         let dformat = DateFormatter()
@@ -59,12 +65,15 @@ struct ContentView: View {
                                 task2Detail = myModel.task2
                                 task3Detail = myModel.task3
                                 pick1Detail = myModel.pick1
+                                pickname1Detail = pickname4
+                                pickname2Detail = pickname5
+                                pickname3Detail = pickname6
                                 isONDetail = myModel.isON
                                 dateDetail = myModel.date
                                 self.showAlert = true
                                             }, label: {
                                                 
-                            NavigationLink(destination: EditView(task: $taskDetail, task2: $task2Detail, task3: $task3Detail, date: $dateDetail, isON: $isONDetail, pick1: $pick1Detail), isActive: $showAlert) {
+                            NavigationLink(destination: EditView(task: $taskDetail, task2: $task2Detail, task3: $task3Detail, date: $dateDetail, isON: $isONDetail, pick1: $pick1Detail, pickname1: $pickname1Detail, pickname2: $pickname2Detail, pickname3: $pickname3Detail), isActive: $showAlert) {
                                     HStack{
                                         VStack(alignment:.leading) {
                                                 Text(myModel.task)
@@ -136,6 +145,8 @@ struct ContentView: View {
                     self.isShown = true
                 }) {
                     Image(systemName: "square.and.pencil")
+                        .padding()
+                        .background(Color.clear)
                 } .sheet(isPresented: self.$isShown) {
                     //モーダル遷移した後に表示するビュー
                     EnterView()

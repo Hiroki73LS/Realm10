@@ -11,6 +11,12 @@ struct EditView: View {
     @Binding var date: Date
     @Binding var isON: Bool
     @Binding var pick1: Int
+    @Binding var pickname1: String
+    @Binding var pickname2: String
+    @Binding var pickname3: String
+
+
+
     @State private var toSave = false
     @State private var alert = false
     @State private var alert1 = false
@@ -46,9 +52,9 @@ struct EditView: View {
                     //-Picker--------------------------
                     Picker(selection: $pick1,
                            label: Text("")) {
-                        Text("練習・課題").tag(0)
-                        Text("出欠席").tag(1)
-                        Text("その他").tag(2)
+                        Text("\(pickname1)").tag(0)
+                        Text("\(pickname2)").tag(1)
+                        Text("\(pickname3)").tag(2)
                     }.pickerStyle(SegmentedPickerStyle())
                     //-Picker--------------------------
                     
