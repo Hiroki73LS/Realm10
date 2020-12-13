@@ -34,10 +34,7 @@ struct ContentView: View {
     @State private var isShown2: Bool = false
     @State private var showingAlert = false
     @State private var showAlert = false
-    @State private var pickname4: String = "選択肢１"
-    @State private var pickname5: String = "選択肢２"
-    @State private var pickname6: String = "選択肢３"
-    
+
     var dateFormat: DateFormatter {
         let dformat = DateFormatter()
         dformat.dateFormat = "yyyy/M/d h:mm"
