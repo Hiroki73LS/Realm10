@@ -4,6 +4,7 @@ import RealmSwift
 
     
 struct EditView: View {
+    @ObservedObject var profile = UserProfile()
     @Environment(\.presentationMode) var presentation
     @Binding var task: String
     @Binding var task2: String
@@ -11,16 +12,11 @@ struct EditView: View {
     @Binding var date: Date
     @Binding var isON: Bool
     @Binding var pick1: Int
-    @Binding var pickname1: String
-    @Binding var pickname2: String
-    @Binding var pickname3: String
-
-
 
     @State private var toSave = false
     @State private var alert = false
     @State private var alert1 = false
-    @State private var sentakusi = ["練習・課題","出欠席","その他"]
+    @State private var sentakusi = [ self.profile.username, self.profile.username2, self.profile.username]
 
     var dateFormat: DateFormatter {
         let dformat = DateFormatter()
@@ -52,9 +48,9 @@ struct EditView: View {
                     //-Picker--------------------------
                     Picker(selection: $pick1,
                            label: Text("")) {
-                        Text("\(pickname1)").tag(0)
-                        Text("\(pickname2)").tag(1)
-                        Text("\(pickname3)").tag(2)
+                        Text("\(profile.username)").tag(0)
+                        Text("\(profile.username2)").tag(1)
+                        Text("\(profile.username3)").tag(2)
                     }.pickerStyle(SegmentedPickerStyle())
                     //-Picker--------------------------
                     

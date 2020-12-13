@@ -15,6 +15,7 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
 }
 
 struct ContentView: View {
+    @ObservedObject var profile = UserProfile()
     @ObservedObject var model = viewModel()
     @State private var idDetail = ""
     @State private var taskDetail = ""
@@ -30,6 +31,7 @@ struct ContentView: View {
     @State private var alert = false
     @State private var alert1 = false
     @State private var isShown: Bool = false
+    @State private var isShown2: Bool = false
     @State private var showingAlert = false
     @State private var showAlert = false
     @State private var pickname4: String = "選択肢１"
@@ -65,15 +67,15 @@ struct ContentView: View {
                                 task2Detail = myModel.task2
                                 task3Detail = myModel.task3
                                 pick1Detail = myModel.pick1
-                                pickname1Detail = pickname4
-                                pickname2Detail = pickname5
-                                pickname3Detail = pickname6
+                                pickname1Detail = profile.username
+                                pickname2Detail = profile.username2
+                                pickname3Detail = profile.username3
                                 isONDetail = myModel.isON
                                 dateDetail = myModel.date
                                 self.showAlert = true
                                             }, label: {
                                                 
-                            NavigationLink(destination: EditView(task: $taskDetail, task2: $task2Detail, task3: $task3Detail, date: $dateDetail, isON: $isONDetail, pick1: $pick1Detail, pickname1: $pickname1Detail, pickname2: $pickname2Detail, pickname3: $pickname3Detail), isActive: $showAlert) {
+                            NavigationLink(destination: EditView(task: $taskDetail, task2: $task2Detail, task3: $task3Detail, date: $dateDetail, isON: $isONDetail, pick1: $pick1Detail), isActive: $showAlert) {
                                     HStack{
                                         VStack(alignment:.leading) {
                                                 Text(myModel.task)
@@ -132,13 +134,15 @@ struct ContentView: View {
         .navigationBarItems(leading:
 
             Button(action: {
-                    let realm = try! Realm()
-                    try! realm.write {
-                        realm.deleteAll()
-                    }})
-           {
+                    self.isShown2 = true
+            }) {
            Image(systemName: "gearshape")
-           },
+            .padding()
+            .background(Color.clear)
+            } .sheet(isPresented: self.$isShown2) {
+                //モーダル遷移した後に表示するビュー
+                Setting()
+            },
             trailing:
             HStack {
                 Button(action: {

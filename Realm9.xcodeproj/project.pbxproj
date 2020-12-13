@@ -14,6 +14,7 @@
 		CE3EEC062559BA7300EE29DA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3EEC052559BA7300EE29DA /* Preview Assets.xcassets */; };
 		CE3EEC092559BA7300EE29DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3EEC072559BA7300EE29DA /* LaunchScreen.storyboard */; };
 		CE3EEC132559BB2000EE29DA /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3EEC122559BB1F00EE29DA /* EnterView.swift */; };
+		CE50F3B5258656D1003A8D5B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50F3B4258656D1003A8D5B /* Setting.swift */; };
 		CEE32201255C142600716BC8 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE32200255C142600716BC8 /* EditView.swift */; };
 		DED3FD5AF418DB301C1A89B4 /* Pods_Realm9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95EE2C876F43FB42C586B045 /* Pods_Realm9.framework */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		CE3EEC082559BA7300EE29DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE3EEC0A2559BA7300EE29DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE3EEC122559BB1F00EE29DA /* EnterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
+		CE50F3B4258656D1003A8D5B /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		CEE32200255C142600716BC8 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,7 @@
 				CE3EEBFE2559BA7200EE29DA /* SceneDelegate.swift */,
 				CE3EEC002559BA7200EE29DA /* ContentView.swift */,
 				CE3EEC122559BB1F00EE29DA /* EnterView.swift */,
+				CE50F3B4258656D1003A8D5B /* Setting.swift */,
 				CEE32200255C142600716BC8 /* EditView.swift */,
 				CE3EEC022559BA7300EE29DA /* Assets.xcassets */,
 				CE3EEC072559BA7300EE29DA /* LaunchScreen.storyboard */,
@@ -221,6 +224,7 @@
 			files = (
 				CE3EEBFD2559BA7200EE29DA /* AppDelegate.swift in Sources */,
 				CE3EEBFF2559BA7200EE29DA /* SceneDelegate.swift in Sources */,
+				CE50F3B5258656D1003A8D5B /* Setting.swift in Sources */,
 				CEE32201255C142600716BC8 /* EditView.swift in Sources */,
 				CE3EEC012559BA7200EE29DA /* ContentView.swift in Sources */,
 				CE3EEC132559BB2000EE29DA /* EnterView.swift in Sources */,
