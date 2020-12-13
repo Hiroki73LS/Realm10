@@ -16,7 +16,7 @@ struct EditView: View {
     @State private var toSave = false
     @State private var alert = false
     @State private var alert1 = false
-    @State private var sentakusi = [ self.profile.username, self.profile.username2, self.profile.username]
+    @State private var sentakusi = ["練習・課題","出欠席","その他"]
 
     var dateFormat: DateFormatter {
         let dformat = DateFormatter()
