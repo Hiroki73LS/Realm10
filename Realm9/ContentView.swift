@@ -118,6 +118,7 @@ struct ContentView: View {
                            try? realm?.write {
                            realm?.delete(self.model.myModels[index])
                                                 }
+                            
                                             }
                         }.listRowBackground(Color.clear)
                     }
