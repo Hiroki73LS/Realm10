@@ -115,10 +115,15 @@ struct ContentView: View {
                         .onDelete { indexSet in
                         if let index = indexSet.first {
                            let realm = try? Realm()
+                            let record = self.model.myModels[index]
+                            print("\(index)")
+                            print("\(record.task)")
+                            print("\(record.task2)")
+                            print("\(record.task3)")
+                            print("\(record.pick1)")
                            try? realm?.write {
                            realm?.delete(self.model.myModels[index])
                                                 }
-                            
                                             }
                         }.listRowBackground(Color.clear)
                     }
