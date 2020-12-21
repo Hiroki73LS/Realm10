@@ -50,56 +50,56 @@ struct ContentView: View {
             backGroundColor.edgesIgnoringSafeArea(.all)
             VStack{
                     List{
-                        ForEach(model.myModels.sorted{$0.date > $1.date}, id: \.id) {
-                                myModel in
+                        ForEach(model.cellModels.sorted{$0.date > $1.date}, id: \.id) {
+                                cellModel in
                             Button(action: {
-                                idDetail = myModel.id
-                                taskDetail = myModel.task
-                                task2Detail = myModel.task2
-                                task3Detail = myModel.task3
-                                pick1Detail = myModel.pick1
+                                idDetail = cellModel.id
+                                taskDetail = cellModel.task
+                                task2Detail = cellModel.task2
+                                task3Detail = cellModel.task3
+                                pick1Detail = cellModel.pick1
                                 pickname1Detail = profile.username
                                 pickname2Detail = profile.username2
                                 pickname3Detail = profile.username3
-                                isONDetail = myModel.isON
-                                dateDetail = myModel.date
+                                isONDetail = cellModel.isON
+                                dateDetail = cellModel.date
                                 self.showAlert = true
                                             }, label: {
                                                 
                             NavigationLink(destination: EditView(task: $taskDetail, task2: $task2Detail, task3: $task3Detail, date: $dateDetail, isON: $isONDetail, pick1: $pick1Detail), isActive: $showAlert) {
                                     HStack{
                                         VStack(alignment:.leading) {
-                                                Text(myModel.task)
+                                                Text(cellModel.task)
                                                 .font(.title)
                                                 Spacer()
                                             VStack{
                                                 HStack{
-                                                    Text(myModel.task2)
+                                                    Text(cellModel.task2)
                                                         .foregroundColor(Color.gray)
                                                     Spacer()
                                                 }
                                                 HStack{
-                                                    Text(myModel.task3)
+                                                    Text(cellModel.task3)
                                                     .foregroundColor(Color.gray)
                                                     Spacer()
-                                                    Text(dateFormat.string(from: myModel.date))
+                                                    Text(dateFormat.string(from: cellModel.date))
                                                 }
                                             }
                                             .padding(0.0)
                                         }
-                                        if myModel.isON == true {
+                                        if cellModel.isON == true {
                                             Image(systemName: "heart.circle.fill")
                                                 .foregroundColor(.pink)
                                                 .onTapGesture {
                                                     try? Realm().write {
-                                                        myModel.isON = false
+//                                                        cellModel.isON = false
                                                     }}
                                         } else {
                                             Image(systemName: "heart.circle.fill")
                                                 .foregroundColor(.secondary)
                                                 .onTapGesture {
                                                     try? Realm().write {
-                                                        myModel.isON = true
+//                                                        cellModel.isON = true
                                                     }}
                                         }
                                     }

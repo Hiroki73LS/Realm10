@@ -12,15 +12,25 @@ class Model: Object {
     @objc dynamic var date = Date()
 }
 
+struct ContentViewCellModel {
+    let id: String
+    let task: String
+    let task2: String
+    let task3: String
+    let pick1: Int
+    var isON: Bool
+    let date: Date
+}
+
 class viewModel: ObservableObject {
     
     private var token: NotificationToken?
     private var myModelResults = try? Realm().objects(Model.self)
-    @Published var myModels: [Model] = []
+    @Published var cellModels: [ContentViewCellModel] = []
 
     init() {
         token = myModelResults?.observe { [weak self] _ in
-            self?.myModels = self?.myModelResults?.map { $0 } ?? []
+            self?.cellModels = self?.myModelResults?.map { ContentViewCellModel(id: $0.id, task: $0.task, task2: $0.task2, task3: $0.task3, pick1: $0.pick1, isON: $0.isON, date: $0.date) } ?? []
         }
     }
 
