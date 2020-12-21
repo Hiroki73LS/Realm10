@@ -144,14 +144,12 @@ struct ContentView: View {
 }}
 
 func rowRemove(offsets: IndexSet) {
-    // ① realmインスタンスの生成
-    let realm = try! Realm()
-
-    // ② 削除したいデータを検索する
-    let targetEmployee = realm.objects(model.self).filter("task == 'AAA'")
+    let ttt = "AAA"
+    let realm = try! Realm()            // ① realmインスタンスの生成
+    let targetEmployee = realm.objects(model.self).filter("task == %@", ttt)  // ② 削除したいデータを検索する
+    
     print(targetEmployee)
-    // ③ 部署を更新する
-    do{
+    do{                                 // ③ 部署を更新する
       try realm.write{
         realm.delete(targetEmployee)
       }
