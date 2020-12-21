@@ -68,7 +68,7 @@ struct EditView: View {
                 //-書き込み--------------------------
                                 let realm = try! Realm()
                                 let predicate = NSPredicate(format: "date == %@", date as CVarArg)
-                                let results = realm.objects(model.self).filter(predicate).first
+                                let results = realm.objects(Model.self).filter(predicate).first
                                 try! realm.write {
                                     results?.date = date
                                     results?.task = task

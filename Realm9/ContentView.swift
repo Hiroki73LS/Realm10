@@ -146,7 +146,7 @@ struct ContentView: View {
 func rowRemove(offsets: IndexSet) {
     let ttt = "AAA"
     let realm = try! Realm()            // ① realmインスタンスの生成
-    let targetEmployee = realm.objects(model.self).filter("task == %@", ttt)  // ② 削除したいデータを検索する
+    let targetEmployee = realm.objects(Model.self).filter("task == %@", ttt)  // ② 削除したいデータを検索する
     
     print(targetEmployee)
     do{                                 // ③ 部署を更新する

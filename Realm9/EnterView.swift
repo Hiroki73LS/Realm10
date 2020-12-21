@@ -2,7 +2,7 @@ import SwiftUI
 import RealmSwift
 
 
-class model: Object {
+class Model: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var task = ""
     @objc dynamic var task2 = ""
@@ -15,8 +15,8 @@ class model: Object {
 class viewModel: ObservableObject {
     
     private var token: NotificationToken?
-    private var myModelResults = try? Realm().objects(model.self)
-    @Published var myModels: [model] = []
+    private var myModelResults = try? Realm().objects(Model.self)
+    @Published var myModels: [Model] = []
 
     init() {
         token = myModelResults?.observe { [weak self] _ in
@@ -99,7 +99,7 @@ struct EnterView: View {
                                 self.alert1.toggle()
                                 self.toSave = true
                 //-書き込み--------------------------
-                                let models = Realm9.model()
+                                let models = Realm9.Model()
                                 models.task = task
                                 models.task2 = task2
                                 models.task3 = sentakusi[pick1]
