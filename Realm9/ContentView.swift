@@ -149,7 +149,7 @@ func rowRemove(offsets: IndexSet) {
 
     // ② 削除したいデータを検索する
     let targetEmployee = realm.objects(model.self).filter("task == 'AAA'")
-
+    print(targetEmployee)
     // ③ 部署を更新する
     do{
       try realm.write{
