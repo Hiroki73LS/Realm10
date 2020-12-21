@@ -106,8 +106,19 @@ struct ContentView: View {
                             }.listRowBackground(Color.clear)
                             }).background(Color.clear)
                         }
-                         .onDelete(perform: rowRemove)
-                         .listRowBackground(Color.clear)
+                        .onDelete { indexSet in
+                            let realm = try? Realm()
+                            if  let index = indexSet.first,
+                                let target = realm?.objects(Model.self).filter("id = %@", self.model.cellModels[index].id).first {
+                                print("\(index)")
+                                print("\(target.id)")
+                                print(target)
+                                try? realm?.write {
+                                realm?.delete(target)
+                                                   }
+                                                }
+                                            }
+                        .listRowBackground(Color.clear)
                      }
             }
             .background(NavigationConfigurator { nc in
