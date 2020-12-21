@@ -1,9 +1,7 @@
 import SwiftUI
 import RealmSwift
-
 struct NavigationConfigurator: UIViewControllerRepresentable {
     var configure: (UINavigationController) -> Void = { _ in }
-
     func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
         UIViewController()
     }
@@ -13,7 +11,6 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
         }
     }
 }
-
 struct ContentView: View {
     @ObservedObject var profile = UserProfile()
     @ObservedObject var model = viewModel()
@@ -34,10 +31,9 @@ struct ContentView: View {
     @State private var isShown2: Bool = false
     @State private var showingAlert = false
     @State private var showAlert = false
-
     var dateFormat: DateFormatter {
         let dformat = DateFormatter()
-        dformat.dateFormat = "yyyy/M/d"
+        dformat.dateFormat = "yyyy/M/d h:mm"
         return dformat
     }
     
@@ -53,11 +49,9 @@ struct ContentView: View {
         ZStack{
             backGroundColor.edgesIgnoringSafeArea(.all)
             VStack{
-
                     List{
                         ForEach(model.myModels.sorted{$0.date > $1.date}, id: \.id) {
                                 myModel in
-
                             Button(action: {
                                 idDetail = myModel.id
                                 taskDetail = myModel.task
@@ -110,11 +104,11 @@ struct ContentView: View {
                                         }
                                     }
                             }.listRowBackground(Color.clear)
-                            })
+                            }).background(Color.clear)
                         }
-                        .onDelete(perform: rowRemove)
-                        .listRowBackground(Color.clear)
-                    }}
+                         .onDelete(perform: rowRemove)
+                         .listRowBackground(Color.clear)
+                     }
             }
             .background(NavigationConfigurator { nc in
              nc.navigationBar.barTintColor = #colorLiteral(red: 0.9033463001, green: 0.9756388068, blue: 0.9194290638, alpha: 1)
@@ -123,7 +117,6 @@ struct ContentView: View {
             }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading:
-
             Button(action: {
                     self.isShown2 = true
             }) {
@@ -148,14 +141,14 @@ struct ContentView: View {
                 }
             })
         }
-}
+}}
 
 func rowRemove(offsets: IndexSet) {
     // ① realmインスタンスの生成
     let realm = try! Realm()
 
     // ② 削除したいデータを検索する
-    let targetEmployee = realm.objects(model.self).filter("task == 'いいい'")
+    let targetEmployee = realm.objects(model.self).filter("task == 'AAA'")
 
     // ③ 部署を更新する
     do{
@@ -166,8 +159,6 @@ func rowRemove(offsets: IndexSet) {
       print("Error \(error)")
     }
             }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
