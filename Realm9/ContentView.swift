@@ -37,7 +37,7 @@ struct ContentView: View {
 
     var dateFormat: DateFormatter {
         let dformat = DateFormatter()
-        dformat.dateFormat = "yyyy/M/d h:mm"
+        dformat.dateFormat = "yyyy/M/d"
         return dformat
     }
     
@@ -110,23 +110,11 @@ struct ContentView: View {
                                         }
                                     }
                             }.listRowBackground(Color.clear)
-                            }).background(Color.clear)
+                            })
                         }
-                        .onDelete { indexSet in
-                        if let index = indexSet.first {
-                           let realm = try? Realm()
-                            let record = self.model.myModels[index]
-                            print("\(index)")
-                            print("\(record.task)")
-                            print("\(record.task2)")
-                            print("\(record.task3)")
-                            print("\(record.pick1)")
-                           try? realm?.write {
-                           realm?.delete(self.model.myModels[index])
-                                                }
-                                            }
-                        }.listRowBackground(Color.clear)
-                    }
+                        .onDelete(perform: rowRemove)
+                        .listRowBackground(Color.clear)
+                    }}
             }
             .background(NavigationConfigurator { nc in
              nc.navigationBar.barTintColor = #colorLiteral(red: 0.9033463001, green: 0.9756388068, blue: 0.9194290638, alpha: 1)
@@ -160,7 +148,26 @@ struct ContentView: View {
                 }
             })
         }
-}}
+}
+
+func rowRemove(offsets: IndexSet) {
+    // ① realmインスタンスの生成
+    let realm = try! Realm()
+
+    // ② 削除したいデータを検索する
+    let targetEmployee = realm.objects(model.self).filter("task == 'いいい'")
+
+    // ③ 部署を更新する
+    do{
+      try realm.write{
+        realm.delete(targetEmployee)
+      }
+    }catch {
+      print("Error \(error)")
+    }
+            }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
