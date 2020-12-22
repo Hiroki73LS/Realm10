@@ -108,14 +108,14 @@ struct ContentView: View {
                         }
                         .onDelete { indexSet in
                             let realm = try? Realm()
-                            if  let index = indexSet.first,
-                                let target = realm?.objects(Model.self).filter("id = %@", self.model.cellModels[index].id).first {
-                                print("\(index)")
-                                print("\(target.id)")
-                                print(target)
+                            let index = indexSet.first
+                            let target = realm?.objects(Model.self).filter("id = %@", self.model.cellModels[index!].id).first
+                                print("\(index!)")
+                                print(target!.id)
+                                print(target!.task)
+                                print(target!)
                                 try? realm?.write {
-                                realm?.delete(target)
-                                                   }
+                                realm?.delete(target!)
                                                 }
                                             }
                         .listRowBackground(Color.clear)
