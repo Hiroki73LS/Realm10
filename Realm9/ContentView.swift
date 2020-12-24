@@ -50,7 +50,7 @@ struct ContentView: View {
             backGroundColor.edgesIgnoringSafeArea(.all)
             VStack{
                     List{
-                        ForEach(model.cellModels.sorted{$0.date > $1.date}, id: \.id) {
+                        ForEach(model.cellModels, id: \.id) {
                                 cellModel in
                             Button(action: {
                                 idDetail = cellModel.id
@@ -110,9 +110,6 @@ struct ContentView: View {
                             let realm = try? Realm()
                             let index = indexSet.first
                             let target = realm?.objects(Model.self).filter("id = %@", self.model.cellModels[index!].id).first
-                                print("\(index!)")
-                                print(target!.id)
-                                print(target!.task)
                                 print(target!)
                                 try? realm?.write {
                                 realm?.delete(target!)

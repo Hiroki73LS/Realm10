@@ -32,7 +32,7 @@ class viewModel: ObservableObject {
         token = myModelResults?.observe { [weak self] _ in
             self?.cellModels = self?.myModelResults?.map { ContentViewCellModel(id: $0.id, task: $0.task, task2: $0.task2, task3: $0.task3, pick1: $0.pick1, isON: $0.isON, date: $0.date) } ?? []
         }
-    }
+            }
 
     deinit {
         token?.invalidate()
@@ -118,7 +118,9 @@ struct EnterView: View {
                                 models.date = date
                                 let realm = try? Realm()
                                 try? realm?.write {
-                                    realm?.add(models)
+                                     realm?.add(models)
+                                let Results = realm?.objects(Model.self).sorted(byKeyPath: "date", ascending: true)
+                                    realm?.add(Results!)
                                 }
                 //-書き込み--------------------------
                                 self.alert = true
